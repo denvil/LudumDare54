@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2d2tthh0i537"]
+
+[ext_resource type="Script" path="res://scenes/ui/order_container.gd" id="1_2811c"]
+[ext_resource type="PackedScene" uid="uid://cwd1s3rdhrsx3" path="res://scenes/ui/order_box.tscn" id="2_ju8cu"]
+
+[node name="OrderContainer" type="PanelContainer"]
+offset_right = 250.0
+offset_bottom = 116.0
+script = ExtResource("1_2811c")
+boxes_scene = ExtResource("2_ju8cu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PlatformLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Platform 1"
+
+[node name="Boxes" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Reward:"
+
+[node name="RewardLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.792157, 0, 1)
+text = "100"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Penalty:"
+
+[node name="PenaltyLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.698039, 0, 0, 1)
+text = "20"
+
+[node name="TimeLeft" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 1.0
+value = 0.5
+show_percentage = false

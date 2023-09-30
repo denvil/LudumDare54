@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn7kiklbvrkmo"]
+[gd_scene load_steps=6 format=3 uid="uid://bn7kiklbvrkmo"]
 
 [ext_resource type="Texture2D" uid="uid://bc6o3xh2lbijc" path="res://assets/player/Player.png" id="1_mcv2t"]
 [ext_resource type="Script" path="res://scenes/game_objects/player/player.gd" id="1_u1se4"]
+[ext_resource type="PackedScene" uid="uid://bp58v0l3ieuv5" path="res://scenes/game_objects/trail/trail.tscn" id="3_pjgdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkvep"]
 size = Vector2(39, 45)
@@ -21,11 +22,31 @@ texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("1_mcv2t")
 
+[node name="TrailPos" type="Node2D" parent="Visuals"]
+position = Vector2(-25, 0)
+
+[node name="Trail" parent="Visuals/TrailPos" instance=ExtResource("3_pjgdt")]
+points = PackedVector2Array(0, 0)
+
+[node name="TrailPos2" type="Node2D" parent="Visuals"]
+position = Vector2(-2, -10)
+
+[node name="Trail" parent="Visuals/TrailPos2" instance=ExtResource("3_pjgdt")]
+points = PackedVector2Array(0, 0)
+
+[node name="TrailPos3" type="Node2D" parent="Visuals"]
+position = Vector2(-2, 10)
+
+[node name="Trail" parent="Visuals/TrailPos3" instance=ExtResource("3_pjgdt")]
+points = PackedVector2Array(0, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-12.5, -0.5)
 shape = SubResource("RectangleShape2D_hkvep")
 
 [node name="PickupArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

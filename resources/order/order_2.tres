@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OrderResource" load_steps=2 format=3 uid="uid://cjhrb6jmvmptk"]
+
+[ext_resource type="Script" path="res://resources/order/order_resource.gd" id="1_e7jm1"]
+
+[resource]
+script = ExtResource("1_e7jm1")
+name = ""
+time = 60
+reward = 200
+penalty = 30
+boxes = Array[int]([0])

@@ -21,6 +21,11 @@ window/size/viewport_width=948
 window/size/viewport_height=533
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom="res://resources/theme/theme.tres"
+theme/custom_font="res://resources/theme/KarenFat.ttf"
+
 [input]
 
 move_left={

@@ -17,7 +17,7 @@ gravity_scale = 0.0
 script = ExtResource("1_si4ho")
 
 [node name="Visuals" type="Node2D" parent="."]
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1e-05, 1e-05)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture_filter = 1

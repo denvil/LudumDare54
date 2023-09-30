@@ -94,17 +94,11 @@ func pickup_box():
 		picked_up_box = box
 		picked_up_box.picked_up.connect(on_picked_up)
 		$CollisionShape2D.shape.size = Vector2(100, 45)
-		#var new_collider = RectangleShape2D.new()
-		#new_collider.size = Vector2(48,45)
-		#$CollisionShape2D.shape = new_collider
-		
-		
-		
-		
+
 
 func handle_interaction():
 	if Input.is_action_just_pressed("action"):
 		pickup_box()
 
-func _process(delta):
+func _process(_delta):
 	handle_interaction()

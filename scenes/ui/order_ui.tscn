@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsf4vdmfe74n5"]
+
+[ext_resource type="PackedScene" uid="uid://c2d2tthh0i537" path="res://scenes/ui/order_container.tscn" id="1_hbol6"]
+[ext_resource type="Script" path="res://scenes/ui/order_ui.gd" id="1_ypcxs"]
+
+[node name="OrderUI" type="CanvasLayer"]
+script = ExtResource("1_ypcxs")
+order_packed = ExtResource("1_hbol6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="Orders" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
