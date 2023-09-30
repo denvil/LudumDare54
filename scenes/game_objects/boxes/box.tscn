@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4n3n80fqljs6"]
+
+[ext_resource type="Script" path="res://scenes/game_objects/boxes/box.gd" id="1_si4ho"]
+[ext_resource type="Texture2D" uid="uid://bioxyq3txviud" path="res://assets/environment/environment.png" id="1_vd22i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uhlm"]
+atlas = ExtResource("1_vd22i")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0eoy"]
+size = Vector2(44, 44)
+
+[node name="Box" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 15
+gravity_scale = 0.0
+script = ExtResource("1_si4ho")
+
+[node name="Visuals" type="Node2D" parent="."]
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture_filter = 1
+texture = SubResource("AtlasTexture_5uhlm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p0eoy")
