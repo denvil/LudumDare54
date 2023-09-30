@@ -12,6 +12,7 @@ func _ready():
 func _physics_process(_delta):
 	if target == null:
 		return
+	
 	point = target.global_position
 	add_point(point)
 	if points.size() > 1000:

@@ -1,5 +1,5 @@
 extends Node
-
+class_name OrderManager
 @export var order_ui: Node
 @onready var timer: Timer = $Timer
 @export var level: int = 1
@@ -13,6 +13,9 @@ var current_orders: Dictionary = {
 }
 
 @export var current_platforms:Array[Area2D]=[]
+
+signal order_completed(order: Order)
+signal order_failed(order: Order)
 
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
@@ -67,6 +70,7 @@ func check_order_completed(order):
 	if boxes_to_be_found.size() == 0:
 		print("Order completed")
 		order.complete()
+		emit_signal("order_completed", order)
 		order.queue_free()
 		current_orders[order.platform] = null
 		# Remove boxes remove function
@@ -85,6 +89,7 @@ func _process(delta):
 			print("Order failed")
 			current_orders[order.platform] = null
 			order.fail()
+			emit_signal("order_failed", order)
 			order.queue_free()
 		else: 
 			# Check if order is complete

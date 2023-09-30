@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf8ogat1sxdkb"]
+
+[ext_resource type="PackedScene" uid="uid://bp58v0l3ieuv5" path="res://scenes/game_objects/trail/trail.tscn" id="1_ldr28"]
+[ext_resource type="Script" path="res://scenes/game_objects/trail/trail_emitter.gd" id="1_oexuv"]
+
+[node name="TrailEmitter" type="Node2D"]
+script = ExtResource("1_oexuv")
+
+[node name="TrailPos" type="Node2D" parent="."]
+position = Vector2(-25, 0)
+
+[node name="Trail" parent="TrailPos" instance=ExtResource("1_ldr28")]
+
+[node name="TrailPos2" type="Node2D" parent="."]
+position = Vector2(-2, -10)
+
+[node name="Trail" parent="TrailPos2" instance=ExtResource("1_ldr28")]
+
+[node name="TrailPos3" type="Node2D" parent="."]
+position = Vector2(-2, 10)
+
+[node name="Trail" parent="TrailPos3" instance=ExtResource("1_ldr28")]
