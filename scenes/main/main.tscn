@@ -31,7 +31,6 @@ size = Vector2(63, 63)
 script = ExtResource("1_oe16n")
 
 [node name="Vignette" parent="." instance=ExtResource("2_67vhh")]
-visible = false
 
 [node name="OrderUI" parent="." instance=ExtResource("2_bp4gy")]
 
@@ -174,12 +173,26 @@ offset_right = 23.0
 offset_bottom = 376.0
 text = "Inbound 00:15"
 
-[node name="IncomingGoodsUIHandler" type="Node" parent="Labels" node_paths=PackedStringArray("inbound_label", "incoming_goods_manager", "boxes_container")]
+[node name="InboundFailed" type="Label" parent="Labels"]
+unique_name_in_owner = true
+visible = false
+offset_left = 69.0
+offset_top = 551.0
+offset_right = 268.0
+offset_bottom = 597.0
+theme_override_colors/font_color = Color(0.807843, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "DELIVERY FAILED DUE 
+OVERBOOKED INBOUND"
+
+[node name="IncomingGoodsUIHandler" type="Node" parent="Labels" node_paths=PackedStringArray("inbound_label", "incoming_goods_manager", "boxes_container", "failure")]
 script = ExtResource("16_6t42m")
 inbound_label = NodePath("../InboundLabel")
 incoming_goods_manager = NodePath("../../IncomingGoodsManager")
 box_scene = ExtResource("11_sd314")
 boxes_container = NodePath("../IncomingBoxes")
+failure = NodePath("../InboundFailed")
 
 [node name="IncomingBoxes" type="VBoxContainer" parent="Labels"]
 offset_left = -51.0

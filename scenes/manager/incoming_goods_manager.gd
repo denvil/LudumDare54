@@ -27,7 +27,7 @@ func _ready():
 
 func create_new_delivery():
 	# Get random item from table
-	next_delivery = game_manager.get_random_boxes(game_manager.get_random_boxcount())
+	next_delivery = game_manager.get_random_boxes(game_manager.get_random_boxcount(true))
 	emit_signal("new_delivery", next_delivery)
 
 

@@ -4,6 +4,7 @@ extends Node
 @export var incoming_goods_manager: Node
 @export var box_scene: PackedScene
 @export var boxes_container: Node
+@export var failure: Label
 
 
 func _ready():
@@ -34,12 +35,12 @@ func next_delivery(boxes: Array):
 		
 
 func delivery_failed():
-	#failure.visible = true
+	failure.visible = true
 	for box in boxes_container.get_children():
 		box.fade_out()
 
 	
 func delivery_completed():
-	#failure.visible = false
+	failure.visible = false
 	for box in boxes_container.get_children():
 		box.fade_out()

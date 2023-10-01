@@ -200,7 +200,8 @@ func upgrade(ability: String):
 func price_status(power_up: String) -> Array:
 	
 	var current_level = get_powerup_level(power_up)
-	
+	if current_level > 4:
+		return []
 	var power_up_data = power_ups[power_up]
 	var level = power_up_data["levels"][current_level]
 	var price = level["price"]

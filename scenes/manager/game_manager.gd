@@ -21,12 +21,14 @@ func _ready():
 	order_manager.order_failed.connect(on_order_failed)
 	GameEvents.on_failure.connect(on_failure)
 	GameEvents.score_mode_upgrade.connect(on_score_mode_upgrade)
+	
 	progress_ui.set_rating(current_rating / 1000.0)
 	progress_ui.set_score(0)
 
 func on_score_mode_upgrade(new_value):
 	current_score_mod = new_value
-	
+
+
 
 func on_order_completed(order: Order):
 	current_rewards += order.reward * current_score_mod

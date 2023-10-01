@@ -10,6 +10,8 @@ class_name OrderManager
 @export var box_count_curve: Curve
 @export var time_curve: Curve
 
+var extra_delivery_upgrade: int = 0
+var order_time_mod_upgrade: int = 0
 
 var current_orders: Dictionary = {
 	"0": null,
@@ -25,6 +27,8 @@ signal order_failed(order: Order)
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	difficulty_timer.timeout.connect(on_difficulty_timer_timeout)
+	GameEvents.extra_delivery_upgrade.connect(on_extra_delivery_upgrade)
+	GameEvents.order_time_mod_upgrade.connect(on_order_time_mod_upgrade)
 
 
 func on_difficulty_timer_timeout():
@@ -33,9 +37,17 @@ func on_difficulty_timer_timeout():
 	if level > 10:
 		level = 10
 
+func on_extra_delivery_upgrade(new_value):
+	extra_delivery_upgrade = new_value
 
-func get_random_boxcount():
-	return randi_range(1, ceil(box_count_curve.sample(level/10.0)))
+func on_order_time_mod_upgrade(new_value):
+	order_time_mod_upgrade = new_value
+
+func get_random_boxcount(is_delivery = false):
+	if is_delivery:
+		return randi_range(1+extra_delivery_upgrade, ceil(box_count_curve.sample(level/10.0)))
+	else:
+		return randi_range(1, ceil(box_count_curve.sample(level/10.0)))
 
 func get_random_boxes(count):
 	var boxes = []
@@ -51,7 +63,7 @@ func new_order():
 	# Generate boxes where curve is max count using random
 	var box_count = get_random_boxcount()
 	order.boxes.append_array(get_random_boxes(box_count))
-	order.time = box_count * randi_range(20, ceil(time_curve.sample(level/10.0)))
+	order.time = box_count * (randi_range(20, ceil(time_curve.sample(level/10.0)))+order_time_mod_upgrade)
 	order.time_left = order.time
 	order.reward = box_count * 100
 	order.penalty = box_count * 50

@@ -3,3 +3,9 @@
 builds
 vault
 progress
+builds.zip
+*.xcf
+*.kra
+*.kra*
+*.1bd
+*.mid
