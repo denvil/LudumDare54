@@ -14,9 +14,9 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.463054, 4.8421), 7.71637, 7.71
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_uprbx"]
-min_value = 20.0
+min_value = 10.0
 max_value = 40.0
-_data = [Vector2(0.00246305, 40), 0.0, 0.0, 0, 0, Vector2(0.995074, 20.6316), -37.9883, 0.0, 0, 0]
+_data = [Vector2(0.00246305, 40), 0.0, 0.0, 0, 0, Vector2(1, 10), -37.9883, 0.0, 0, 0]
 point_count = 2
 
 [node name="OrderManager" type="Node"]

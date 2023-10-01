@@ -104,23 +104,23 @@ func _ready():
 			"levels": [
 				{
 					"price": [1,0,0],
-					"value": 10
+					"value": 2
 				},
 				{
 					"price": [2,0,0],
-					"value": 20
+					"value": 5
 				},
 				{
 					"price": [2,1,0],
-					"value": 25
+					"value": 8
 				},
 				{
 					"price": [1,1,2],
-					"value": 30
+					"value": 10
 				},
 				{
 					"price": [1,2,2],
-					"value": 35
+					"value": 12
 				},																
 			]
 		},
