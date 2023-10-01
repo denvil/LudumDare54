@@ -35,6 +35,7 @@ script = ExtResource("1_oe16n")
 [node name="OrderUI" parent="." instance=ExtResource("2_bp4gy")]
 
 [node name="ProgressUI" parent="." instance=ExtResource("11_a3ixb")]
+process_mode = 3
 
 [node name="GameManager" parent="." node_paths=PackedStringArray("order_manager", "progress_ui") instance=ExtResource("3_6qsyl")]
 order_manager = NodePath("../OrderManager")

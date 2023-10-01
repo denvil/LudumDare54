@@ -21,7 +21,10 @@ func _ready():
 	order_manager.order_failed.connect(on_order_failed)
 	GameEvents.on_failure.connect(on_failure)
 	GameEvents.score_mode_upgrade.connect(on_score_mode_upgrade)
+	reset_progress.call_deferred()
 	
+
+func reset_progress():
 	progress_ui.set_rating(current_rating / 1000.0)
 	progress_ui.set_score(0)
 
@@ -42,7 +45,7 @@ func on_order_completed(order: Order):
 func on_order_failed(order: Order):
 	current_rating -= order.penalty
 	progress_ui.set_rating(current_rating / 1000.0)
-	if current_rating < 0:
+	if current_rating <= 0:
 		GameEvents.emit_failure()
 
 func on_failure():
