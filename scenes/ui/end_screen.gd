@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+func set_score(score):
+	%FinalScoreLabel.text = "Final score: " + str(score)
+
 func _ready():
 	get_tree().paused = true
 	%Restart.pressed.connect(on_restart_button_pressed)

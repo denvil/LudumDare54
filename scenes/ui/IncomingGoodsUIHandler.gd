@@ -1,23 +1,23 @@
-extends CanvasLayer
-@onready var boxes_container = %Boxes
-@onready var failure = %Failure
+extends Node
 
-@export var arena_time_manager: Node
-@onready var label = %TimerLabel
+@export var inbound_label: Label
+@export var incoming_goods_manager: Node
 @export var box_scene: PackedScene
+@export var boxes_container: Node
+
 
 func _ready():
-	# Set signals from arena time manager
-	arena_time_manager.new_delivery.connect(next_delivery)
-	arena_time_manager.delivery_failed.connect(delivery_failed)
-	arena_time_manager.delivery_completed.connect(delivery_completed)
+	# Set signals from incoming_goods_manager
+	incoming_goods_manager.new_delivery.connect(next_delivery)
+	incoming_goods_manager.delivery_failed.connect(delivery_failed)
+	incoming_goods_manager.delivery_completed.connect(delivery_completed)
 
 func _process(_delta):
-	if arena_time_manager == null:
+	if incoming_goods_manager == null:
 		return
-	var time_elapsed = arena_time_manager.get_time_remaining()
+	var time_elapsed = incoming_goods_manager.get_time_remaining()
 	# Convert seconds to string as minutes:seconds
-	label.text = format_seconds_to_string(time_elapsed)
+	inbound_label.text = "Inbound " + format_seconds_to_string(time_elapsed)
 	
 func format_seconds_to_string(seconds: float):
 	var minutes = floor(seconds / 60)
@@ -26,6 +26,7 @@ func format_seconds_to_string(seconds: float):
 	return str(int(minutes)) + ":" + seconds_string
 
 func next_delivery(boxes: Array):
+	print("New delivery")
 	for box in boxes:
 		var new_box = box_scene.instantiate()
 		new_box.set_boxtype(box)
@@ -33,12 +34,12 @@ func next_delivery(boxes: Array):
 		
 
 func delivery_failed():
-	failure.visible = true
+	#failure.visible = true
 	for box in boxes_container.get_children():
 		box.fade_out()
 
 	
 func delivery_completed():
-	failure.visible = false
+	#failure.visible = false
 	for box in boxes_container.get_children():
 		box.fade_out()

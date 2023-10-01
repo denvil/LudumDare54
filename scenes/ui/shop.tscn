@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cga5mtjybi2jk"]
+
+[ext_resource type="Script" path="res://scenes/ui/shop.gd" id="1_wmvey"]
+[ext_resource type="PackedScene" uid="uid://bnfd8r3qnuy31" path="res://scenes/ui/power_up_container.tscn" id="2_u2uca"]
+
+[node name="Shop" type="CanvasLayer"]
+process_mode = 3
+layer = 2
+script = ExtResource("1_wmvey")
+power_up_scene = ExtResource("2_u2uca")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.658824, 0.827451, 1, 0.796078)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

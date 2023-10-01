@@ -1,11 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://vdjruwuqbfqa"]
+[gd_scene load_steps=5 format=3 uid="uid://vdjruwuqbfqa"]
 
 [ext_resource type="Script" path="res://scenes/manager/order_manager.gd" id="1_7365x"]
 
+[sub_resource type="Curve" id="Curve_b77g4"]
+max_value = 2.65
+_data = [Vector2(0, 0.056), 0.0, 0.0, 0, 0, Vector2(0.150246, 0.641579), 0.0, 0.0, 0, 0, Vector2(0.307882, 2.12895), 0.0, 0.0, 0, 0, Vector2(0.94335, 2.51105), -0.231007, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_wl6g7"]
+min_value = 1.0
+max_value = 6.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.463054, 4.8421), 7.71637, 7.71637, 0, 0, Vector2(1, 6), 7.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_uprbx"]
+min_value = 20.0
+max_value = 40.0
+_data = [Vector2(0.00246305, 40), 0.0, 0.0, 0, 0, Vector2(0.995074, 20.6316), -37.9883, 0.0, 0, 0]
+point_count = 2
+
 [node name="OrderManager" type="Node"]
 script = ExtResource("1_7365x")
+box_selection_curve = SubResource("Curve_b77g4")
+box_count_curve = SubResource("Curve_wl6g7")
+time_curve = SubResource("Curve_uprbx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+autostart = true
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 60.0
 autostart = true

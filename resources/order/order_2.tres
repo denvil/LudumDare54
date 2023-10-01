@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_e7jm1")
 name = ""
-time = 1
+time = 120
 reward = 500
 penalty = 200
-boxes = Array[int]([0, 0])
+boxes = Array[int]([0, 1])

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://cau50s2qowkn6"]
+[gd_scene load_steps=2 format=3 uid="uid://cau50s2qowkn6"]
+
+[ext_resource type="Script" path="res://scenes/ui/progress_ui.gd" id="1_pus3d"]
 
 [node name="ProgressUI" type="CanvasLayer"]
+script = ExtResource("1_pus3d")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -8,6 +11,57 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="RatingLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Rating"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Rating" type="ProgressBar" parent="MarginContainer/VBoxContainer/MarginContainer/Control"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+offset_top = -4.0
+offset_right = 200.0
+offset_bottom = 21.0
+max_value = 1.0
+show_percentage = false
+
+[node name="RatingLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 75.0
+offset_right = 115.0
+offset_bottom = 19.0
+text = "0 / 10"
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score"
+
+[node name="Score" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10000"
+
+[node name="FailDebug" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "fail debug"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/FailDebug" to="." method="_on_fail_debug_pressed"]

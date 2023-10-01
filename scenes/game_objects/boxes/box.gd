@@ -6,13 +6,23 @@ signal picked_up
 signal dropped(box)
 
 @export var on_ground: bool =  true
-
 @export var box_type: int = 0
+@onready var box_a = $Visuals/BoxA
+@onready var box_b = $Visuals/BoxB
+@onready var box_c = $Visuals/BoxC
+
 
 func _ready():
 	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.0)
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property($Visuals, "scale", Vector2(1.5,1.5), 0.3)
+	if box_type == 0:
+		box_a.visible = true
+	elif box_type == 1:
+		box_b.visible = true
+	else:
+		box_c.visible = true
 
 func picked_up_finished():
 	emit_signal("picked_up")

@@ -55,3 +55,8 @@ func _unhandled_input(event):
 		
 		close()
 		get_tree().root.set_input_as_handled()
+
+
+func _on_powerslider_value_changed(value):
+	%PowerLabel.text = "Power debug " + str(value)
+	GameEvents.emit_new_power(value)

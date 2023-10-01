@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6t6h5rlhntrp"]
+
+[ext_resource type="Script" path="res://scenes/manager/shop_manager.gd" id="1_syitc"]
+
+[node name="ShopManager" type="Node"]
+script = ExtResource("1_syitc")

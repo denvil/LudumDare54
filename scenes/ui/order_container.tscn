@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cwd1s3rdhrsx3" path="res://scenes/ui/order_box.tscn" id="2_ju8cu"]
 
 [node name="OrderContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(250, 0)
 offset_right = 250.0
 offset_bottom = 116.0
 script = ExtResource("1_2811c")
@@ -11,6 +12,9 @@ boxes_scene = ExtResource("2_ju8cu")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_mu73x")
 name = ""
-time = 1
-reward = 200
-penalty = 30
+time = 60
+reward = 50
+penalty = 100
 boxes = Array[int]([0])

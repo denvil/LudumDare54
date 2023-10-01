@@ -1,7 +1,7 @@
 extends Node
 @onready var timer = $Timer
 @export var box_scene: PackedScene
-
+@export var game_manager: Node
 var incoming_table: WeightedTable = WeightedTable.new()
 
 signal new_delivery(boxes: Array)
@@ -20,20 +20,14 @@ func get_time_remaining():
 
 func _ready():
 	timer.timeout.connect(on_timer_timeout)
-	incoming_table.add_item([0, 0, 0], 10)
-	incoming_table.add_item([0], 10)
-	incoming_table.add_item([0, 0, 0, 0], 10)
 	timer.start()
 	create_new_delivery()
+	on_timer_timeout.call_deferred()
 
 
 func create_new_delivery():
-
-
-
 	# Get random item from table
-	var item = incoming_table.get_item()
-	next_delivery = item
+	next_delivery = game_manager.get_random_boxes(game_manager.get_random_boxcount())
 	emit_signal("new_delivery", next_delivery)
 
 
@@ -52,15 +46,19 @@ func on_timer_timeout():
 	emit_signal("delivery_completed")
 	# Calculate spawn points using input area shape divided into equal parts
 	var pos_x = input_area.global_position.x - 70
-	var pos_y = input_area.global_position.y - 60
-
+	var pos_y = input_area.global_position.y - 40
+	var pos_index = 0
 	for i in range(next_delivery.size()):
 		var box = box_scene.instantiate() as Node2D
+		box.box_type = next_delivery[i]
 		var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 		entities_layer.add_child(box)
-		if i % 4 == 0:
-			pos_y += 30
+		if i > 0 and i % 4 == 0 :
+			print("New row")
+			pos_y += 60
 			pos_x = input_area.global_position.x - 70
-		box.global_position = Vector2(pos_x + 60 * i, pos_y)
+			pos_index = 0
+		box.global_position = Vector2(pos_x + 60 * pos_index, pos_y)
+		pos_index += 1
 	create_new_delivery()
 
